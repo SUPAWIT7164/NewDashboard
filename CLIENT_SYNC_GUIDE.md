@@ -32,7 +32,7 @@ php artisan clients:sync
 
 #### Sync เฉพาะลูกค้าใหม่
 ```bash
-php artisan clients:sync --new-only
+php artisan clients:sync --new-only 
 ```
 
 #### ดูข้อมูล API (สำหรับ debug)

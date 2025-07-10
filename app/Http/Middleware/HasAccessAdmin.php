@@ -14,11 +14,20 @@ class HasAccessAdmin
      */
     public function handle($request, Closure $next)
     {
-        // Allow all authenticated users to access admin area
-        if (Auth::check()) {
-            return $next($request);
+        if (!Auth::check()) {
+            if ($request->expectsJson()) {
+                return response()->json(['message' => 'Unauthenticated.'], 401);
+            }
+            return abort(403);
         }
 
-        return abort(403);
+        // Add CSRF token to response headers for API requests
+        $response = $next($request);
+        
+        if ($request->expectsJson()) {
+            $response->headers->set('X-CSRF-TOKEN', csrf_token());
+        }
+
+        return $response;
     }
 }

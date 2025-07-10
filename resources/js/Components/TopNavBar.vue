@@ -1,5 +1,5 @@
 <script setup>
-import { mdiLogout, mdiWeatherNight, mdiWeatherSunny, mdiAccount } from "@mdi/js";
+import { mdiLogout, mdiWeatherNight, mdiWeatherSunny, mdiAccount, mdiChartBox } from "@mdi/js";
 import { containerMaxW } from "@/config.js";
 import BaseIcon from "@/Components/BaseIcon.vue";
 import { useDarkModeStore } from "@/Stores/darkMode.js";
@@ -16,6 +16,10 @@ const toggleDarkMode = () => {
 
 const logout = () => {
   router.post(route("logout"));
+};
+
+const goToXMReport = () => {
+  router.get('/admin/xm');
 };
 </script>
 
@@ -44,6 +48,18 @@ const logout = () => {
       
       <!-- Right Side Controls -->
       <div class="flex items-center space-x-4 px-6">
+        <!-- XM Report Button -->
+        <button
+          @click="goToXMReport"
+          class="flex items-center justify-center px-4 py-2 rounded-xl bg-gradient-to-r from-blue-500 to-indigo-600 text-white shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 space-x-2"
+        >
+          <BaseIcon
+            :path="mdiChartBox"
+            size="20"
+          />
+          <span class="font-semibold">XM Report</span>
+        </button>
+
         <!-- Dark Mode Toggle -->
         <button
           @click="toggleDarkMode"

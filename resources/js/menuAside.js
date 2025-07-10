@@ -82,4 +82,40 @@ export default [
             },
         ],
     },
+    {
+        to: '/admin',
+        icon: 'mdi:view-dashboard',
+        label: 'Dashboard'
+    },
+    {
+        label: 'Report',
+        icon: 'mdi:chart-line',
+        menu: [
+            {
+                to: '/admin/report/clients',
+                label: 'Clients'
+            },
+            {
+                to: '/admin/report/client-account',
+                label: 'Client Account'
+            },
+            {
+                to: '/admin/report/client-transaction',
+                label: 'Client Transaction'
+            },
+            {
+                to: '/admin/report/client-rebate',
+                label: 'Client Rebate'
+            },
+            {
+                to: '/admin/report/client-summary',
+                label: 'Client Summary'
+            }
+        ]
+    },
+    {
+        label: 'XM Report',
+        icon: 'mdi:chart-box',
+        to: '/admin/xm'
+    },
 ];

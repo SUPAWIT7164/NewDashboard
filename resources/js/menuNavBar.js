@@ -10,6 +10,7 @@ import {
     mdiThemeLightDark,
     mdiGithub,
     mdiReact,
+    mdiChartBox,
 } from "@mdi/js";
 
 export default [
@@ -33,6 +34,11 @@ export default [
                 label: "Item Last",
             },
         ],
+    },
+    {
+        icon: mdiChartBox,
+        label: "XM Report",
+        to: "/admin/xm",
     },
     {
         isCurrentUser: true,

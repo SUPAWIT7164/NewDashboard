@@ -4,6 +4,7 @@ use App\Http\Middleware\HasAccessAdmin;
 use App\Http\Middleware\Admin\HandleInertiaAdminRequests;
 use Inertia\Inertia;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Admin\XMReportController;
 
 Route::group([
     'namespace' => 'App\Http\Controllers\Admin',
@@ -61,5 +62,13 @@ Route::group([
         Route::get('transactions-pending2', 'Report2Controller@transactionsPending2')->name('transactions-pending2');
         Route::get('reward-history2', 'Report2Controller@rewardHistory2')->name('reward-history2');
         Route::get('test-connection2', 'Report2Controller@testConnection2')->name('test-connection2');
+    });
+
+    // XM Report Routes
+    Route::prefix('xm')->group(function () {
+        Route::get('/', [XMReportController::class, 'index'])->name('admin.xm.index');
+        Route::get('/traders', [XMReportController::class, 'getTraderList'])->name('admin.xm.traders');
+        Route::get('/transactions', [XMReportController::class, 'getTraderTransactions'])->name('admin.xm.transactions');
+        Route::get('/rebate', [XMReportController::class, 'getLotRebateStatistics'])->name('admin.xm.rebate');
     });
 });
